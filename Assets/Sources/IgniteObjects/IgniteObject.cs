@@ -9,23 +9,23 @@ public class IgniteObject : MonoBehaviour
     private float _cooldown;
     private float _currentTime;
     private float _startSize;
-    private bool _isExtinguished;
+    private bool _isExtinguishing;
 
     public event UnityAction Extinguished;
 
     private void Start()
     {
-        _cooldown = 0.4f;
+        _cooldown = 1f;
         _currentTime = 0;
         _startSize = _fire.startSize;
-        _isExtinguished = false;
+        _isExtinguishing = false;
     }
 
     private void Update()
     {
-        if (_fire.startSize <= 0 && _isExtinguished == false)
+        if (_fire.startSize <= 0 && _isExtinguishing == false)
         {
-            _isExtinguished = true;
+            _isExtinguishing = true;
             _smoke.Play();
             _fire.Clear();
             _fire.Stop();
@@ -47,12 +47,12 @@ public class IgniteObject : MonoBehaviour
     private void ResumeBurning()
     {
         if (_fire.startSize >= 0 && _fire.startSize < _startSize)
-            _fire.startSize += 0.003f;
+            _fire.startSize += 0.002f;
     }
 
     private bool CheckTimer()
     {
-        if (_currentTime <= 0 && _isExtinguished == false)
+        if (_currentTime <= 0 && _isExtinguishing == false)
             return true;
 
         return false;

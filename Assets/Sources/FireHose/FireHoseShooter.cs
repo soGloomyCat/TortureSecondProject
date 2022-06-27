@@ -5,6 +5,8 @@ public class FireHoseShooter : MonoBehaviour
     [SerializeField] private WaterStreamHandler _waterPrefab;
     [SerializeField] private Transform _pool;
     [SerializeField] private ParticleSystem _waterStream;
+    [SerializeField] private ParticleSystem _waterShadow;
+    [SerializeField] private ParticleSystem _waterLight;
 
     private bool _isStreamCreated = false;
 
@@ -20,17 +22,25 @@ public class FireHoseShooter : MonoBehaviour
     private void Shoot()
     {
         _isStreamCreated = true;
-        WaterStreamHandler tempWater;
 
+        _waterLight.Play();
         _waterStream.Play();
-        tempWater = Instantiate(_waterPrefab, _pool);
+        _waterShadow.Play();
+        Instantiate(_waterPrefab, _pool);
     }
 
     private void DestroyWaterStream()
     {
         _isStreamCreated = false;
-        _waterStream.Stop();
-        _waterStream.Clear();
+        DisableParticleSystem(_waterStream);
+        DisableParticleSystem(_waterShadow);
+        DisableParticleSystem(_waterLight);
         Destroy(_pool.GetChild(0).gameObject);
+    }
+
+    private void DisableParticleSystem(ParticleSystem particleSystem)
+    {
+        particleSystem.Clear();
+        particleSystem.Stop();
     }
 }

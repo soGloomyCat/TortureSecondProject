@@ -72,7 +72,7 @@ Material:
     - _Cutoff: 0.5
     - _DepthDensity: 1
     - _DetailNormalMapScale: 1
-    - _DistanceDensity: 0.17
+    - _DistanceDensity: 0.15
     - _DstBlend: 0
     - _EdgeFoamDepth: 0
     - _FancyShadows: 0
@@ -83,15 +83,15 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MaxShadowDistance: 50
+    - _MaxShadowDistance: 150
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReflectionContribution: 1
+    - _ReflectionContribution: 0.6
     - _SmoothnessTextureChannel: 0
     - _SparkleExponent: 150
-    - _SparkleScale: 50
+    - _SparkleScale: 60
     - _SparkleSpeed: 0.15
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -110,13 +110,13 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColor: {r: 0.39999998, g: 0.6425532, b: 1, a: 1}
+    - _DeepColor: {r: 0.48490566, g: 1, b: 0.79800224, a: 1}
     - _EdgeFoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.21960783, g: 0.85497963, b: 1, a: 1}
+    - _FarColor: {r: 0.3436454, g: 0.9245283, b: 0.8351616, a: 1}
     - _SSSColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.03551086, g: 0.30351532, b: 0.3584906, a: 1}
-    - _ShallowColor: {r: 0.40197787, g: 1, b: 0.92158204, a: 1}
-    - _SparkleColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShallowColor: {r: 0.60754716, g: 1, b: 0.86384284, a: 1}
+    - _SparkleColor: {r: 3.9547167, g: 7.9198623, b: 8, a: 1}
     - _SunSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
