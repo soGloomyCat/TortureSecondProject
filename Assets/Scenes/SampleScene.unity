@@ -5877,9 +5877,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waterPrefab: {fileID: -882998750542775754, guid: 6f00841dfd816fa4a83224b9131e6878, type: 3}
   _pool: {fileID: 217061108}
-  _waterStream: {fileID: 1512735943}
-  _waterShadow: {fileID: 5527596384084623690}
-  _waterLight: {fileID: 5710932016828072313}
+  _particleSystems:
+  - {fileID: 1512735943}
+  - {fileID: 5527596384084623690}
+  - {fileID: 5710932016828072313}
 --- !u!4 &333867899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f8bc9434ebbd6348a17adbd04a1e2a7, type: 3}

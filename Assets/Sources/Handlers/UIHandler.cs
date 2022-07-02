@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    private const float CorrectiveValue = 0.15f;
+    private const float Cooldown = 0.01f;
+
     [SerializeField] Slider _progressBar;
     [SerializeField] private Button _button;
     [SerializeField] private GameObject _finalPanel;
@@ -41,8 +44,8 @@ public class UIHandler : MonoBehaviour
 
         changeValue = 0.05f;
         correctValue = currentValue;
-        maxValue = correctValue + 0.15f;
-        waiter = new WaitForSeconds(0.01f);
+        maxValue = correctValue + CorrectiveValue;
+        waiter = new WaitForSeconds(Cooldown);
 
         while (_progressBar.value < maxValue)
         {

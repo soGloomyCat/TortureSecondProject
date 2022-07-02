@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class IgniteObject : MonoBehaviour
 {
+    private const float ReductionValue = 0.003f;
+    private const float MagnificationValue = 0.002f;
+
     [SerializeField] private ParticleSystem _fire;
     [SerializeField] private ParticleSystem _smoke;
 
@@ -12,6 +15,12 @@ public class IgniteObject : MonoBehaviour
     private bool _isExtinguishing;
 
     public event UnityAction Extinguished;
+
+    public void Extinguish()
+    {
+        _currentTime = _cooldown;
+        _fire.startSize -= ReductionValue;
+    }
 
     private void Start()
     {
@@ -38,16 +47,10 @@ public class IgniteObject : MonoBehaviour
         _currentTime -= Time.deltaTime;
     }
 
-    public void Extinguish()
-    {
-        _currentTime = _cooldown;
-        _fire.startSize -= 0.003f;
-    }
-
     private void ResumeBurning()
     {
         if (_fire.startSize >= 0 && _fire.startSize < _startSize)
-            _fire.startSize += 0.002f;
+            _fire.startSize += MagnificationValue;
     }
 
     private bool CheckTimer()

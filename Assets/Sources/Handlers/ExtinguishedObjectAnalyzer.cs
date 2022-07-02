@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ExtinguishedObjectAnalyzer : MonoBehaviour
 {
+    private const int IgniteTreesCount = 5;
+
     private int _extinguishedTreesCount;
 
     public event UnityAction<int> CountChanged;
@@ -14,7 +15,7 @@ public class ExtinguishedObjectAnalyzer : MonoBehaviour
         _extinguishedTreesCount++;
         CountChanged?.Invoke(_extinguishedTreesCount);
 
-        if (_extinguishedTreesCount == 5)
+        if (_extinguishedTreesCount == IgniteTreesCount)
             GameOver?.Invoke();
     }
 

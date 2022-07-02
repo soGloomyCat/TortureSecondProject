@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireHoseShooter : MonoBehaviour
 {
+    private const int HoseIndex = 0;
+
     [SerializeField] private WaterStreamHandler _waterPrefab;
     [SerializeField] private Transform _pool;
-    [SerializeField] private ParticleSystem _waterStream;
-    [SerializeField] private ParticleSystem _waterShadow;
-    [SerializeField] private ParticleSystem _waterLight;
+    [SerializeField] private List<ParticleSystem> _particleSystems;
 
     private bool _isStreamCreated = false;
 
@@ -22,25 +23,29 @@ public class FireHoseShooter : MonoBehaviour
     private void Shoot()
     {
         _isStreamCreated = true;
-
-        _waterLight.Play();
-        _waterStream.Play();
-        _waterShadow.Play();
+        ActivateParticleSystems(_particleSystems);
         Instantiate(_waterPrefab, _pool);
     }
 
     private void DestroyWaterStream()
     {
         _isStreamCreated = false;
-        DisableParticleSystem(_waterStream);
-        DisableParticleSystem(_waterShadow);
-        DisableParticleSystem(_waterLight);
-        Destroy(_pool.GetChild(0).gameObject);
+        DisableParticleSystems(_particleSystems);
+        Destroy(_pool.GetChild(HoseIndex).gameObject);
     }
 
-    private void DisableParticleSystem(ParticleSystem particleSystem)
+    private void ActivateParticleSystems(List<ParticleSystem> particleSystems)
     {
-        particleSystem.Clear();
-        particleSystem.Stop();
+        foreach (var particleSystem in particleSystems)
+            particleSystem.Play();
+    }
+
+    private void DisableParticleSystems(List<ParticleSystem> particleSystems)
+    {
+        foreach (var particleSystem in particleSystems)
+        {
+            particleSystem.Clear();
+            particleSystem.Stop();
+        }
     }
 }
